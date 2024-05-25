@@ -17,7 +17,7 @@ class Level:
         for row_index, row in enumerate(WORLD_MAP):
             for col_index, col in enumerate(row):
                 if col == "w":
-                    Tile(((row_index*64),(col_index*64)), self.visible_sprites)
+                    Tile(((row_index*64),(col_index*64)), [self.visible_sprites, self.obstacle_sprites])
                 if col == "p":
                     Player(((row_index*64),(col_index*64)), self.visible_sprites)
 
