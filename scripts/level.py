@@ -1,5 +1,6 @@
 import pygame
 from settings import *
+from tile import Tile
 
 class Level:
     def __init__(self):
@@ -12,10 +13,12 @@ class Level:
 
         self.create_map()
     def create_map(self):
-        for row in WORLD_MAP:
-            print(row)
+        for row_index, row in enumerate(WORLD_MAP):
+            for col_index, col in enumerate(row):
+                if col == "w":
+                    Tile(((row_index*64),(col_index*64)), self.visible_sprites)
 
     def run(self):
         # Update and Draw the game
-        pass
+        self.visible_sprites.draw(self.display_surface)
     
