@@ -32,11 +32,9 @@ class Game:
     #Setting up the TMX map Tiles
     def setup(self, tmx_map, player_start_pos):
         # Terrain Tiles
-        for x, y, surf in tmx_map.get_layer_by_name("Terrain").tiles():
-            Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
-
-        for x, y, surf in tmx_map.get_layer_by_name("Terrain Top").tiles():
-            Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
+        for layer in ["Terrain", "Terrain Top"]:
+            for x, y, surf in tmx_map.get_layer_by_name(layer).tiles():
+                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
 
         # Objects
         for obj in tmx_map.get_layer_by_name("Objects"):
